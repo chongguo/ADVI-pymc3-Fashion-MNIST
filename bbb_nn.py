@@ -1,4 +1,3 @@
-# %load bbb_nn.py
 def construct_nn(ann_input, ann_output, n_input, n_output, n_train, n_hidden_1=64, n_hidden_2=32):
     # backwards compatibility
     return construct_nn_2lay(ann_input, ann_output, n_input, n_output, n_train, n_hidden_1, n_hidden_2)
@@ -12,13 +11,13 @@ def construct_nn_1lay(ann_input, ann_output, n_input, n_output, n_train, n_hidde
     
     with pm.Model() as neural_network:
         # Weights from input to first hidden layer
-        w_in_1 = pm.Normal('w_in_1', mu=0, sd=0.1, shape=(n_input, n_hidden_1), testval=init_w_in_1)
+        w_in_1 = pm.Normal('w_in_1', mu=0, sd=0.5, shape=(n_input, n_hidden_1), testval=init_w_in_1)
         
         # Bias in first layer
-        b_1 = pm.Normal('b_1',mu=0, sd=0.1, shape=(n_hidden_1), testval=init_b_1)
+        b_1 = pm.Normal('b_1',mu=0, sd=0.5, shape=(n_hidden_1), testval=init_b_1)
         
         # Weights from 1st hidden layer to output layer
-        w_1_out = pm.Normal('w_1_out',mu=0, sd=0.1, shape=(n_hidden_1, n_output), testval=init_w_1_out)
+        w_1_out = pm.Normal('w_1_out',mu=0, sd=0.5, shape=(n_hidden_1, n_output), testval=init_w_1_out)
         
         # Build neural-network using tanh activation function
         act_1 = pm.Deterministic('act_1',var=pm.math.tanh(pm.math.dot(ann_input,w_in_1)+b_1))        
