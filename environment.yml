@@ -1,0 +1,33 @@
+name: bbb_models
+channels:
+  - conda-forge
+  - anaconda
+  - defaults
+dependencies:
+  - python=3.6
+  - autograd
+  - cython
+  - ipython
+  - jupyter
+  - jupyterlab
+  - keras
+  - matplotlib
+  - mkl-service
+  - notebook
+  - ipyparallel
+  - ipywidgets
+  - numexpr
+  - numba
+  - numpy
+  - pandas
+  - pip
+  - pprofile
+  - python-graphviz
+  - seaborn
+  - scikit-learn
+  - statsmodels
+  - scipy
+  - tensorflow
+  - theano
+  - pip:
+     - "git+git://github.com/pymc-devs/pymc3.git@master"
